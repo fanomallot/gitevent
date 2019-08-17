@@ -17,7 +17,7 @@ require 'faker'
 	10.times do
 		Event.create(start_date: Time.now ,
    	duration: rand(500),
-    title: Faker::Name.first_name,
+    title: Faker::Game.title ,
     description: Faker::Hipster.paragraph(sentence_count: 2),
     price: rand(1000),
     location: Faker::Address.city,
