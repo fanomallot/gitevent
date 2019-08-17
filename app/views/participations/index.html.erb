@@ -1,0 +1,13 @@
+
+<head>
+	<title>Les participants</title>
+</head>
+<body>
+		<%@event.participants.each do |path|%>
+		<%=path.first_name%>
+		<%=path.last_name%></br>
+		<%=path.email%></br></br>
+		<%end%>
+		<%=link_to "edit event", edit_event_path(@event.id) %></br>
+		
+</body>

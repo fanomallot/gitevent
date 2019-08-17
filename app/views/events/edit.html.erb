@@ -1,0 +1,22 @@
+
+<head>
+	<title>Edit event</title>
+</head>
+<body>
+	<%=form_tag url_for(action:'update'), method:'put' do %>
+	<input type="text" name="title" value="<%=@event.title%>"></br>
+	<label for="start">Date/</label>
+	<label for="start">Time:</label></br>
+	<input type="date" id="start" name="date" min= <%=Time.now%> >
+	<input type="time" id="start" name="time" value="00:00"></br>
+	<input type="time" name="timer" value="00:00"></br>
+	<textarea type="text" name="description" ><%=@event.description%></textarea></br> 
+	<input type="text" name="location" value="<%=@event.location%>"></br>
+	<input type="integer" name="price" value="<%=@event.price%>"></br>
+	<input type="submit" value="update">
+	<%=link_to "delete", event_path(@event.id) ,method:'delete',
+		data: {confirm: 'Are you sure'} , class:"btn btn-danger"%></br>
+	<%end%>
+	<%=link_to 'retour à la page précendant',event_participations_path(@event.id)%>
+
+</body>
