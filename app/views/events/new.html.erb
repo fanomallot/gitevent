@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Création event</title>
+	</head>
+	<body>
+		<!-- affichage allert -->
+		<% if flash[:success] %>
+		<div class="alert alert-success" style="text-align: center;"><%= flash[:success]%></div>
+		<% else  %>
+		<%if flash[:danger]%>
+		<div class="alert alert-danger" style="text-align: center;"><%= flash[:danger]%></div>
+		<% end %>
+		<%if flash[:message]%>
+		<div class="alert alert-light" style="text-align: center;"><%= flash[:message]%></div>
+		<% end %>
+		<% end %>
+		<!-- table de création -->
+		<%=form_tag url_for(action:'create'),method:'post' do%>
+		le titre de l'evenement:</br>
+		<input type="text" name="title"></br>
+		qui se passera le:</br>
+		<label for="start">Date/</label>
+		<label for="start">Time:</label></br>
+		<input type="date" id="start" name="date" min= <%=Time.now%>>
+		<input type="time" id="start" name="time" value="00:00"></br>
+		Duré:</br>
+		Heure/minute(multiple de 5)</br>
+		<input class="l-2" type="time" name="timer" value="00:00"></br>
+		à:</br>
+		<input type="text" name="location"></br>
+		et s'intitule sur:</br>
+		<textarea type="text" name="description"></textarea></br>
+		avec une path de:</br>
+		<input type="text" name="price"></br>
+		<input type="submit" value="create"></br>
+		<%end%></br>
+		<!-- renvoi message en cas d'erreur -->
+		<% if @e.errors.any? %>
+		<p>Nous n'avons pas réussi à créer l'Event pour la (ou les) raison(s) suivante(s) :</p>
+		<ul>
+			<% @e.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+		<% end %>
+		
+	</body>
+</html>

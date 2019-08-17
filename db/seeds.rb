@@ -21,7 +21,7 @@ require 'faker'
     description: Faker::Hipster.paragraph(sentence_count: 2),
     price: rand(1000),
     location: Faker::Address.city,
-    admin: u[rand(10..19)] ,
-    participants: [u[rand(10..19)],u[rand(10..19)],u[rand(13..19)]] )
+    admin: u[rand(0..19)] ,
+    participants: [u[rand(0..19)],u[rand(0..19)],u[rand(0..19)]] )
 	end
-puts "user done 1"
+puts "user done 2"

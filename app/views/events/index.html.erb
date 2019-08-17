@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Eventbrite</title>
+</head>
+<body>
+	<!-- affichage allert -->
+	<% if flash[:success] %>
+    <div class="alert alert-success" style="text-align: center;"><%= flash[:success]%></div>
+    <% else  %>
+    	<%if flash[:danger]%>
+    <div class="alert alert-danger" style="text-align: center;"><%= flash[:danger]%></div>
+    <% end %>
+    <% end %>
+	Les events
+
+	<%=link_to 'crée un evenement de oufff',new_event_path%>
+	<h1>Les Teufs qui viennent sont tous là</h1>
+	<%@event.each do |event|%>
+
+ 	<p>l'event</p>
+ 	<a href="<%=event_path(event.id)%>"><%=event.title%></br></a>
+	<%=event.start_date%></br>
+
+	<%=event.location%></br>
+	<%=event.price%></br>
+	<%end%>
+	</br></br>
+
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%=@event.title%> Eventbrite</title>
+	</head>
+	<body>
+		<%=@event.title%></br>
+		<%=@event.description%></br>
+		<%=@event.participants.count%></br>
+		<p>l auteur</p>
+		<%=link_to "#{@event.admin.first_name}", user_path(@event.admin.id)%></br>
+		<%=@event.admin.email%>
+		</br>
+		<%=@event.start_date.to_date%></br>
+		<%=@event.start_date.to_time.hour%>:<%= @event.start_date.to_time.min%>:<%if @event.start_date.to_time.sec < 10 %>0<%=@event.start_date.to_time.sec%><%else%><%=@event.start_date.to_time.sec%><%end%>  jusqu'à 
+			<%if @event.start_date.to_date == @end_date.to_date %>
+				<%=@end_date.to_time.hour%>:<%= @end_date.to_time.min%>:<%if @end_date.to_time.sec < 10 %>0<%=@end_date.to_time.sec%><%else%><%=@end_date.to_time.sec%><%end%>
+			<%else%>
+			<%=@end_date.to_date%>  à <%=@end_date.to_time.hour%>:<%= @end_date.to_time.min%>:<%if @end_date.to_time.sec < 10 %>0<%=@end_date.to_time.sec%><%else%><%=@end_date.to_time.sec%><%end%> 
+			<%end%>
+		</br>
+		<%=@event.location%></br></br>
+		<%=@event.price%></br>
+	</body>
+</html>

@@ -1,15 +1,86 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Eventbird</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/carousel/">
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
-
   <body>
+    <header>
+      <!-- page d acceuil -->
+      <nav class="navbar navbar-expand-md navbar-inverse fixed-top bg-inverse">
+        <a class="navbar-brand" href="/">
+        <img src="https://www.eventsatenjoy.com/uploads/files/Images/logos/site-logo-small-light.png" width="80" height="35"> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <%if user_signed_in?%>
+          
+          <h4> <li class="nav-item active text-success "></h4>
+          </li>
+          <%end%>
+          <!-- elimination d espace -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"></a>
+            </li>
+          </ul>
+          <!--barre de recherche  -->
+          <form class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          <%if user_signed_in?%>
+          <!-- ************************* -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-outline-info my-1 ml-2 my-sm-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="https://www.eventsatenjoy.com/uploads/files/Images/logos/site-logo-small-light.png" width="80" height="35">
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <!-- voir profil -->
+              <a class="dropdown-item" href="/users/<%=current_user.id%>">Profil</a>
+              <!-- barre Deconnection -->
+              <a class="dropdown-item "><%=link_to 'Déconnection',destroy_user_session_path, method: 'delete', class: "my-1 ml-3 my-sm-0" %></a>
+            </div>
+          </div>
+          <%else%>
+          <!--inscription   se connecter -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-outline-info my-1 ml-2 my-sm-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            sign
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="<%=new_user_registration_path%>">S'inscrire</a>
+              <a class="dropdown-item" href="<%=new_user_session_path%>">Se connecter</a>
+            </div>
+          </div>
+          <%end%>
+        </div>
+      </nav>
+    </header>
+    </br></br></br>
     <%= yield %>
+    <!-- appel css -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </body>
 </html>

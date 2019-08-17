@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Eventbrite <%=@user.first_name%></title>
+</head>
+<body>
+	<!-- affichage allert -->
+	<% if flash[:success] %>
+    <div class="alert alert-success" style="text-align: center;"><%= flash[:success]%></div>
+    <% else  %>
+    	<%if flash[:danger]%>
+    <div class="alert alert-danger" style="text-align: center;"><%= flash[:danger]%></div>
+    <% end %>
+    <% end %>
+   <!-- affichage user -->
+	<h1> <%=@user.first_name%> </br>
+	<%=@user.last_name%> </h1>
+	<p><%=@user.email%></p></br>
+	<p><%=@user.description%></p></br>
+	voici les evenements de <%=@user.first_name%></br>
+	<%@user.admin_events.each do |event|%>
+
+		<%=link_to "#{event.title}", event_path(event.id) %>
+		<%if @user == current_user%>
+		<%=link_to "delete", event_path(event.id) ,method:'delete',
+		data: {confirm: 'Are you sure'} , class:"btn btn-danger"%>
+		<%end%>
+	</br>
+	<%end%></br></br>
+
+	<%if @user == current_user%>
+	<%=link_to "edit profil", edit_user_path%></br>
+	<%=link_to "changé l'email et le mots de passe", edit_user_registration_path%>
+	<%end%>
+	<%=link_to "retour à la page d'acceuil",events_path%>
+	
+</body>
+</html>
